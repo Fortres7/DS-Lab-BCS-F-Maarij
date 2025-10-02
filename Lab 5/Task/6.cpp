@@ -15,10 +15,10 @@ void printSolution(int sol[N][N]) {
 // Check if maze[x][y] is safe to visit
 //check if sol[N][N] is already visited or not
 bool isSafe(int maze[N][N], int x, int y, int sol[N][N]) {
-    return (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1 && sol[N][N] == 0);
+    return (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1 && sol[x][y] == 0);
 }
 
-// Backtracking utility for 2 directions
+// Backtracking utility for 4 directions
 bool solveMazeUtil(int maze[N][N], int x, int y, int sol[N][N]) {
     // WHEN destination is reached
     if (x == N - 1 && y == N - 1) {
@@ -26,7 +26,7 @@ bool solveMazeUtil(int maze[N][N], int x, int y, int sol[N][N]) {
         return true;
     }
 
-    if (isSafe(maze, x, y)) {
+    if (isSafe(maze, x, y, sol)) {
         sol[x][y] = 1;
 
         // Move Right
@@ -57,17 +57,17 @@ void solveMaze(int maze[N][N]) {
         return;
     }
 
-    cout << "Path found (2 directions):\n";
+    cout << "Path found:\n";
     printSolution(sol);
 }
 
 int main() {
     int maze[N][N] = {
-        {1, 0, 0, 0, 0},
-        {1, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0},
+        {1, 0, 1, 1, 1},
+        {1, 1, 1, 0, 1},
+        {0, 0, 0, 1, 1},
         {1, 1, 1, 1, 0},
-        {0, 0, 0, 1, 1}
+        {1, 1, 0, 1, 1}
     };
 
     solveMaze(maze);
