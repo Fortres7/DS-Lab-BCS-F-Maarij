@@ -175,8 +175,6 @@ int main()
   cout << "\nLevel Order Traversal:\n";
   levelOrder(root);
   cout << "\n";
-
-  // Search
   string key = "Hassaan";
   cout << "\nSearching for " << key << ": "
        << (searchBST(root, key) ? "Found" : "Not Found") << endl;
